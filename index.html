@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Jokes</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Best jokes of the day.</h3>
+        <h1 id="jokes"></h1>
+        <button id="jokeBtn">Next Joke</button>
+    </div>
+
+
+
+
+    <script>
+        //    Using Promises
+        // GET https://icanhazdadjoke.com/
+
+        const jokes = document.querySelector('#jokes');
+        const jokeBtn = document.querySelector('#jokeBtn');
+
+
+        const generateJokes = () => {
+
+            const setHeader = () => {
+                headers: {
+                    Accept: "application/json"
+                }
+            }
+
+            let data;
+            fetch('https://icanhazdadjoke.com', setHeader)
+            .then((res) => res.json.parse(data))
+            .then((data) => {
+                jokes.innerHTML = data.joke;
+            }).catch((error) => {
+                console.log(error);
+            })
+            
+        }
+
+        jokeBtn.addEventListener('click', generateJokes);
+        generateJokes();
+
+
+
+    </script>
+</body>
+
+</html>
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Jokes</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>😂 Best jokes of the day.😂</h3>
+        <h1 id="jokes"></h1>
+        <button id="jokeBtn">Next Joke</button>
+    </div>
+
+    <script>
+        const jokes = document.querySelector('#jokes');
+        const jokeBtn = document.querySelector('#jokeBtn');
+
+        const generateJokes = () => {
+            const setHeader = {
+                headers: {
+                    Accept: "application/json"
+                }
+            };
+
+            fetch('https://official-joke-api.appspot.com/random_joke', setHeader)
+                .then((res) => res.json())
+                .then((data) => {
+                    jokes.innerHTML = data.setup + '<br>' + data.delivery;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+
+        jokeBtn.addEventListener('click', generateJokes);
+        generateJokes();
+    </script>
+</body>
+
+</html>
